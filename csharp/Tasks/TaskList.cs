@@ -9,7 +9,7 @@ namespace Tasks
 		private readonly Projects _projects = new ();
 		private readonly IConsole _console;
 
-		private long _lastIdentifier;
+		private TaskListLastID _lastId;
 
 		public static void Main()
 		{
@@ -88,7 +88,7 @@ namespace Tasks
 		private void AddTask(string project, string description)
         {
             _projects.AddTaskToProject(project,
-                new Task { Identifier = NextId(), Description = description, Done = false },
+                new Task { Identifier = _lastId.NextId(), Description = description, Done = false },
 				_console
             );
         }
